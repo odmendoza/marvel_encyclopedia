@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Revistas
+{% endblock %}
+
+{% block contenido %}
+    <a href="/nueva/revista" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Añadir
+        nueva revista</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td scope="col">Página</td>
+            <td scope="col">Título</td>
+            <td scope="col">Edición</td>
+            <td scope="col">Año de Publicación</td>
+            <td scope="col">Reseña</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for revista in revistas %}
+            <tr>
+                <td scope="row">{{ revista.0 }}</td>
+                <td>{{ revista.1 }}</td>
+                <td>{{ revista.2 }}</td>
+                <td>{{ revista.3 }}</td>
+                <td>{{ revista.4 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

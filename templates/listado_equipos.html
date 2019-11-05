@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Equipos
+{% endblock %}
+
+{% block contenido %}
+    <a href="/nuevo/equipo" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Añadir
+        nuevo equipo</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Página</td>
+            <td>Equipo</td>
+            <td>Nombre en español</td>
+            <td>Número de integrantes</td>
+            <td>País de origen</td>
+            <td>Departamento</td>
+            <td>Líder</td>
+            <td>Base</td>
+            <td>Primera aparición</td>
+            <td>Fecha</td>
+            <td>Historia</td>
+            <td>Colaboradores</td>
+            <td>Aliados</td>
+            <td>Enemigos</td>
+            <td>Argumentos esenciales</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for equipo in equipos %}
+            <tr>
+                <td>{{ equipo.0 }}</td>
+                <td>{{ equipo.1 }}</td>
+                <td>{{ equipo.2 }}</td>
+                <td>{{ equipo.3 }}</td>
+                <td>{{ equipo.4 }}</td>
+                <td>{{ equipo.5 }}</td>
+                <td>{{ equipo.6 }}</td>
+                <td>{{ equipo.7 }}</td>
+                <td>{{ equipo.8 }}</td>
+                <td>{{ equipo.9 }}</td>
+                <td>{{ equipo.10 }}</td>
+                <td>{{ equipo.11 }}</td>
+                <td>{{ equipo.12 }}</td>
+                <td>{{ equipo.13 }}</td>
+                <td>{{ equipo.14 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

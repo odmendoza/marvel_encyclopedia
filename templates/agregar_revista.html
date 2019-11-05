@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Agregar Revista
+{% endblock %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="abs-center">
+            <br>
+            <h2 align="center">Agregar revista</h2>
+            <br>
+            <form action="/nueva/revista" , method="POST">
+                PÁGINA <input class="form-control" type="int" , name="pagina"><br>
+                TÍTULO <input class="form-control" type="text" , name="titulo"><br>
+                EDICIÓN <input class="form-control" type="text" , name="edicion"><br>
+                AÑO PUBLICACIÓN <input class="form-control" type="int" , name="anoPublicacion"><br>
+                RESEÑA <input class="form-control" type="text" , name="resena"><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

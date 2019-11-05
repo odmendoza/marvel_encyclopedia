@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Agregar Colaborador
+{% endblock %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="abs-center">
+            <br>
+            <form action="/nuevo/colaborador" , method="POST">
+                NOMBRE <input class="form-control" type="text" , name="colaborador"><br>
+                ABREVIATURA <input class="form-control" type="text" , name="abreviatura"><br>
+                DESCRIPCION <input class="form-control" type="text" , name="descripcion"><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

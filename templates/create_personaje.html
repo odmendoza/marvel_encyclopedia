@@ -1,0 +1,52 @@
+{#{% with mesagges = get_flashed_message() %}#}
+{#{% if mesagges %}#}
+{#    {% for message in mesagges %}#}
+{#        <p>{{ mesagge }}</p>#}
+{#    {% endfor %}#}
+{#{% endif %}#}
+{#{% endwith %}#}
+
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Agregar Personaje
+{% endblock %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="abs-center">
+            <br>
+            <h2>Ingresar un nuevo personaje</h2><br>
+            <form action="/nuevo/personaje" , method="POST">
+                Página <input class="form-control" type="number" , name="pagina"><br>
+                Personaje <input class="form-control" type="text" , name="personaje"><br>
+                Nombre en español <input class="form-control" type="text" , name="nombreEnEspanol"><br>
+                Nombre real <input class="form-control" type="text" , name="nombreReal"><br>
+                Ocupación <input class="form-control" type="text" , name="ocupacion"><br>
+                Base <input class="form-control" type="text" , name="base"><br>
+                Altura <input class="form-control" type="text" , name="altura"><br>
+                Peso <input class="form-control" type="text" , name="peso"><br>
+                Ojos <input class="form-control" type="text" , name="ojos"><br>
+                Pelo <input class="form-control" type="text" , name="pelo"><br>
+                Primera aparición <input class="form-control" type="text" , name="primeraAparicion"><br>
+                Poderes <input class="form-control" type="text" , name="poderes"><br>
+                Historia <input class="form-control" type="text" , name="historia"><br>
+                Curiosidades <input class="form-control" type="text" , name="curiosidades"><br>
+                Colaboradores <input class="form-control" type="text" , name="colaboradores"><br>
+                Fecha de aparición <input class="form-control" type="text" , name="fechaAparicion"><br>
+                Debilidad <input class="form-control" type="text" , name="debilidad"><br>
+                Obsesiones <input class="form-control" type="text" , name="obsesiones"><br>
+                Causa del poder <input class="form-control" type="text" , name="causaDelPoder"><br>
+                Género <input class="form-control" type="text" , name="genero"><br>
+                Enemigos <input class="form-control" type="text" , name="enemigos"><br>
+                Planeta de origen <input class="form-control" type="text" , name="planetaDeOrigen"><br>
+                Argumentos esenciales <input class="form-control" type="text" , name="argumentosEsenciales"><br>
+                Aliados <input class="form-control" type="text" , name="aliados"><br>
+                Relación sentimental <input class="form-control" type="text" , name="relacionSentimental"><br>
+                Apodo <input class="form-control" type="text" , name="apodo"><br>
+                Miembros clave <input class="form-control" type="text" , name="miembrosClave"><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

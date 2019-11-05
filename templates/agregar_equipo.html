@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Agregar Equipo
+{% endblock %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="abs-center">
+            <br>
+            <h2 align="center">Agregar equipo</h2>
+            <br>
+            <form action="/nuevo/equipo" , method="POST">
+                PÁGINA <input class="form-control" type="int" , name="pagina"><br>
+                EQUIPO <input class="form-control" type="text" , name="equipo"><br>
+                NOMBRE EN ESPAÑOL<input class="form-control" type="text" , name="nombreEspanol"><br>
+                NÚMERO DE INTEGRANTES <input class="form-control" type="int" , name="numeroIntegrantes"><br>
+                PAÍS DE ORIGEN <input class="form-control" type="text" , name="paisOrigen"><br>
+                DEPARTAMENTO <input class="form-control" type="text" , name="departamento"><br>
+                LIDER <input class="form-control" type="text" , name="lider"><br>
+                BASE <input class="form-control" type="text" , name="base"><br>
+                PRIMERA APARICIÓN <input class="form-control" type="text" , name="primeraAparicion"><br>
+                FECHA <input class="form-control" type="text" , name="fecha"><br>
+                HISTORIA <input class="form-control" type="text" , name="historia"><br>
+                COLABORADORES <input class="form-control" type="text" , name="colaboradores"><br>
+                ALIADOS <input class="form-control" type="text" , name="aliados"><br>
+                ENEMIGOS <input class="form-control" type="text" , name="enemigos"><br>
+                ARGUMENTOS ESENCIALES <input class="form-control" type="text" , name="argumentosEsenciales"><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

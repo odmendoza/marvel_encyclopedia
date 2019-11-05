@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Personajes
+{% endblock %}
+
+{% block contenido %}
+    <a href="/nuevo/personaje" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Añadir
+        nuevo personaje</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Página</td>
+            <td>Personaje</td>
+            <td>Nombre en español</td>
+            <td>Nombre real</td>
+            <td>Ocupación</td>
+            <td>Base</td>
+            <td>Altura</td>
+            <td>Peso</td>
+            <td>Ojos</td>
+            <td>Pelo</td>
+            <td>Primera aparición</td>
+            <td>Poderes</td>
+            <td>Historia</td>
+            <td>Curiosidades</td>
+            <td>Colaboradores</td>
+            <td>Fecha aparición</td>
+            <td>Debilidad</td>
+            <td>Obsesiones</td>
+            <td>Causa del poder</td>
+            <td>Género</td>
+            <td>Enemigos</td>
+            <td>Planeta de origen</td>
+            <td>Argumentos esenciales</td>
+            <td>Aliados</td>
+            <td>Relación sentimental</td>
+            <td>Apodo</td>
+            <td>Miembros clave</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for personaje in personajes %}
+            <tr>
+                <td>{{ personaje.0 }}</td>
+                <td>{{ personaje.1 }}</td>
+                <td>{{ personaje.2 }}</td>
+                <td>{{ personaje.3 }}</td>
+                <td>{{ personaje.4 }}</td>
+                <td>{{ personaje.5 }}</td>
+                <td>{{ personaje.6 }}</td>
+                <td>{{ personaje.7 }}</td>
+                <td>{{ personaje.8 }}</td>
+                <td>{{ personaje.9 }}</td>
+                <td>{{ personaje.10 }}</td>
+                <td>{{ personaje.11 }}</td>
+                <td>{{ personaje.12 }}</td>
+                <td>{{ personaje.13 }}</td>
+                <td>{{ personaje.14 }}</td>
+                <td>{{ personaje.15 }}</td>
+                <td>{{ personaje.16 }}</td>
+                <td>{{ personaje.17 }}</td>
+                <td>{{ personaje.18 }}</td>
+                <td>{{ personaje.19 }}</td>
+                <td>{{ personaje.20 }}</td>
+                <td>{{ personaje.21 }}</td>
+                <td>{{ personaje.22 }}</td>
+                <td>{{ personaje.23 }}</td>
+                <td>{{ personaje.24 }}</td>
+                <td>{{ personaje.25 }}</td>
+                <td>{{ personaje.26 }}</td>
+                <td>{{ personaje.27 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

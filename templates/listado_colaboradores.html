@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Colaboradores
+{% endblock %}
+
+{% block contenido %}
+    <a href="/nuevo/colaborador" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Añadir
+        nuevo colaborador</a>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <td>Colaborador</td>
+            <td>Abreviatura</td>
+            <td>Descripción</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for colaborador in colaboradores %}
+            <tr>
+            <td>{{ colaborador.0 }}</td>
+            <td>{{ colaborador.1 }}</td>
+            <td>{{ colaborador.2 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
