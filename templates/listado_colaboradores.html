@@ -5,24 +5,39 @@
 {% endblock %}
 
 {% block contenido %}
-    <a href="/nuevo/colaborador" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Añadir
-        nuevo colaborador</a>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <td>Colaborador</td>
-            <td>Abreviatura</td>
-            <td>Descripción</td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for colaborador in colaboradores %}
-            <tr>
-            <td>{{ colaborador.0 }}</td>
-            <td>{{ colaborador.1 }}</td>
-            <td>{{ colaborador.2 }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="container">
+        <div class="abs-center">
+            <a href="/nuevo/colaborador" class="btn btn-primary btn-lg active btn-block" role="button"
+               aria-pressed="true">Añadir
+                nuevo colaborador</a>
+            <br>
+            <table class="table table-bordered" id="tabla_colaboradores">
+                <thead>
+                <tr>
+                    <th>Colaborador</th>
+                    <th>Abreviatura</th>
+                    <th>Descripción</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for colaborador in colaboradores %}
+                    <tr>
+                        <td>{{ colaborador.1 }}</td>
+                        <td>{{ colaborador.2 }}</td>
+                        <td>{{ colaborador.3 }}</td>
+                        <td><a href="/editar/colaborador/{{ colaborador.0 }}">EDITAR</a></td>
+                        <td><a href="/eliminar/colaborador/{{ colaborador.0 }}">ELIMINAR</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $('#tabla_colaboradores').DataTable();
+        });
+    </script>
 {% endblock %}

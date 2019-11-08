@@ -5,9 +5,11 @@
 {% endblock %}
 
 {% block contenido %}
+    <br>
     <a href="/nuevo/equipo" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Añadir
         nuevo equipo</a>
-    <table class="table table-bordered">
+    <br>
+    <table class="table table-bordered" id="tabla_equipos">
         <thead>
         <tr>
             <td>Página</td>
@@ -25,12 +27,13 @@
             <td>Aliados</td>
             <td>Enemigos</td>
             <td>Argumentos esenciales</td>
+            <td></td>
+            <td></td>
         </tr>
         </thead>
         <tbody>
         {% for equipo in equipos %}
             <tr>
-                <td>{{ equipo.0 }}</td>
                 <td>{{ equipo.1 }}</td>
                 <td>{{ equipo.2 }}</td>
                 <td>{{ equipo.3 }}</td>
@@ -45,8 +48,52 @@
                 <td>{{ equipo.12 }}</td>
                 <td>{{ equipo.13 }}</td>
                 <td>{{ equipo.14 }}</td>
+                <td>{{ equipo.15 }}</td>
+                <td><a href="/editar/equipo/{{ equipo.0 }}">EDITAR</a></td>
+                <td><a href="/eliminar/equipo/{{ equipo.0 }}">ELIMINAR</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <script>
+        $(document).ready(function () {
+            $('#tabla_equipos').DataTable({
+                dom: 'Bfrtip',
+                columnDefs: [
+                    {
+                        targets: 1,
+                        className: 'noVis'
+                    },
+                    {
+                        // Volver botones invisibles y excluirlos de las busquedas
+                        targets: [10],
+                        visible: false,
+                        searchable: false
+                    },
+                    {
+                        orderable: false,
+                        className: 'select-checkbox',
+                        targets: 0
+                    }
+
+                ],
+                buttons: [
+                    {
+                        extend: 'colvisGroup',
+                        text: 'Ver historia',
+                        show: [1, 10],
+                        hide: [0, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 13, 14]
+                    },
+                    {
+                        extend: 'colvisGroup',
+                        text: 'Ver todo',
+                        show: ':hidden',
+                        hide: [10]
+                    }
+                    {#,#}
+                    {#'copy', 'csv', 'excel', 'pdf', 'print'#}
+                ]
+            });
+        });
+    </script>
 {% endblock %}

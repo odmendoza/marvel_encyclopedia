@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Agregar Personaje
+{% endblock %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="abs-center">
+            <br>
+            <h2>Ingresar un nuevo personaje</h2><br>
+            <form action="/editar/personaje{{ personaje.0 }}" , method="POST">
+                Página <input class="form-control" type="number" , name="pagina" value="{{ personaje.1 }}"><br>
+                Personaje <input class="form-control" type="text" , name="personaje" value="{{ personaje.2 }}"><br>
+                Nombre en español <input class="form-control" type="text" , name="nombreEnEspanol" value="{{ personaje.3 }}><br>
+                Nombre real <input class="form-control" type="text" , name="nombreReal" value="{{ personaje.4 }}"><br>
+                Ocupación <input class="form-control" type="text" , name="ocupacion" value="{{ personaje.5 }}"><br>
+                Base <input class="form-control" type="text" , name="base" value="{{ personaje.6 }}"><br>
+                Altura <input class="form-control" type="text" , name="altura" value="{{ personaje.7 }}"><br>
+                Peso <input class="form-control" type="text" , name="peso" value="{{ personaje.8 }}"><br>
+                Ojos <input class="form-control" type="text" , name="ojos" value="{{ personaje.9 }}"><br>
+                Pelo <input class="form-control" type="text" , name="pelo" value="{{ personaje.10 }}"><br>
+                Primera aparición <input class="form-control" type="text" , name="primeraAparicion" value="{{ personaje.11 }}"><br>
+                Poderes <input class="form-control" type="text" , name="poderes" value="{{ personaje.12 }}"><br>
+                Historia <input class="form-control" type="text" , name="historia" value="{{ personaje.13 }}"><br>
+                Curiosidades <input class="form-control" type="text" , name="curiosidades" value="{{ personaje.14 }}"><br>
+                Colaboradores <input class="form-control" type="text" , name="colaboradores" value="{{ personaje.15 }}"><br>
+                Fecha de aparición <input class="form-control" type="text" , name="fechaAparicion" value="{{ personaje.16 }}"><br>
+                Debilidad <input class="form-control" type="text" , name="debilidad" value="{{ personaje.17 }}"><br>
+                Obsesiones <input class="form-control" type="text" , name="obsesiones" value="{{ personaje.18 }}"><br>
+                Causa del poder <input class="form-control" type="text" , name="causaDelPoder" value="{{ personaje.19 }}"><br>
+                Género <input class="form-control" type="text" , name="genero" value="{{ personaje.20 }}"><br>
+                Enemigos <input class="form-control" type="text" , name="enemigos" value="{{ personaje.21 }}"><br>
+                Planeta de origen <input class="form-control" type="text" , name="planetaDeOrigen" value="{{ personaje.22 }}"><br>
+                Argumentos esenciales <input class="form-control" type="text" , name="argumentosEsenciales" value="{{ personaje.23 }}"><br>
+                Aliados <input class="form-control" type="text" , name="aliados" value="{{ personaje.24 }}"><br>
+                Relación sentimental <input class="form-control" type="text" , name="relacionSentimental" value="{{ personaje.25 }}"><br>
+                Apodo <input class="form-control" type="text" , name="apodo" value="{{ personaje.26 }}"><br>
+                Miembros clave <input class="form-control" type="text" , name="miembrosClave" value="{{ personaje.27 }}"><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

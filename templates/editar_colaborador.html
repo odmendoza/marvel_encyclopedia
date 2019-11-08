@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Editar Colaborador
+{% endblock %}
+
+{% block contenido %}
+    <h2 align="center">Editar Colaborador</h2>
+    <div class="container">
+        <div class="abs-center">
+            <br>
+            <form action="/editar/colaborador{{ colaborador.0 }}" , method="POST">
+                NOMBRE <input class="form-control" type="text" , name="colaborador" value="{{ colaborador.2 }}"><br>
+                ABREVIATURA <input class="form-control" type="text" , name="abreviatura" value="{{ colaborador.1 }}"><br>
+                DESCRIPCION <input class="form-control" type="text" , name="descripcion" value="{{ colaborador.3 }}"><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

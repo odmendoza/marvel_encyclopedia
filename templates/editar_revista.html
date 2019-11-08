@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Editar Revista
+{% endblock %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="abs-center">
+            <br>
+            <h2 align="center">Editar revista</h2>
+            <br>
+            <form action="/editar/revista{{revista.0}}" , method="POST">
+                PÁGINA <input class="form-control" type="int" , name="pagina" value="{{ revista.1 }}"><br>
+                TÍTULO <input class="form-control" type="text" , name="titulo" value="{{ revista.2 }}"><br>
+                EDICIÓN <input class="form-control" type="text" , name="edicion" value="{{ revista.3 }}"><br>
+                AÑO PUBLICACIÓN <input class="form-control" type="int" , name="anoPublicacion" value="{{ revista.4 }}"><br>
+                RESEÑA <input class="form-control" type="text" , name="resena" value="{{ revista.5 }}"><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

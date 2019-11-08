@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block nombre_titulo %}
+    Editar Equipo
+{% endblock %}
+
+{% block contenido %}
+    <div class="container">
+        <div class="abs-center">
+            <br>
+            <h2 align="center">Editar equipo</h2>
+            <br>
+            <form action="/editar/equipo{{ equipo.0 }}" , method="POST">
+                PÁGINA <input class="form-control" type="int" , name="pagina" value="{{ equipo.1 }}"><br>
+                EQUIPO <input class="form-control" type="text" , name="equipo" value="{{ equipo.2 }}"><br>
+                NOMBRE EN ESPAÑOL<input class="form-control" type="text" , name="nombreEspanol" value="{{ equipo.3 }}"><br>
+                NÚMERO DE INTEGRANTES <input class="form-control" type="int" , name="numeroIntegrantes" value="{{ equipo.4 }}"><br>
+                PAÍS DE ORIGEN <input class="form-control" type="text" , name="paisOrigen" value="{{ equipo.5 }}"><br>
+                DEPARTAMENTO <input class="form-control" type="text" , name="departamento" value="{{ equipo.6 }}"><br>
+                LIDER <input class="form-control" type="text" , name="lider" value="{{ equipo.7 }}"><br>
+                BASE <input class="form-control" type="text" , name="base" value="{{ equipo.8 }}"><br>
+                PRIMERA APARICIÓN <input class="form-control" type="text" , name="primeraAparicion" value="{{ equipo.9 }}"><br>
+                FECHA <input class="form-control" type="text" , name="fecha" value="{{ equipo.10 }}"><br>
+                HISTORIA <input class="form-control" type="text" , name="historia" value="{{ equipo.11 }}"><br>
+                COLABORADORES <input class="form-control" type="text" , name="colaboradores" value="{{ equipo.12 }}"><br>
+                ALIADOS <input class="form-control" type="text" , name="aliados" value="{{ equipo.13 }}"><br>
+                ENEMIGOS <input class="form-control" type="text" , name="enemigos" value="{{ equipo.14 }}"><br>
+                ARGUMENTOS ESENCIALES <input class="form-control" type="text" , name="argumentosEsenciales" value="{{ equipo.14 }}"><br>
+                <input class="btn btn-primary" type="submit">
+            </form>
+        </div>
+    </div>
+{% endblock %}

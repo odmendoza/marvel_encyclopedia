@@ -5,9 +5,14 @@
 {% endblock %}
 
 {% block contenido %}
+    <div class="container">
+        <div class="abs-center">
+    <br>
     <a href="/nueva/revista" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Añadir
         nueva revista</a>
-    <table class="table table-bordered">
+    <br>
+    {#    <a class="btn btn-primary" href="#" role="button">Link</a>#}
+    <table class="table table-bordered" id="tabla_revistas">
         <thead>
         <tr>
             <td scope="col">Página</td>
@@ -15,18 +20,29 @@
             <td scope="col">Edición</td>
             <td scope="col">Año de Publicación</td>
             <td scope="col">Reseña</td>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         {% for revista in revistas %}
             <tr>
-                <td scope="row">{{ revista.0 }}</td>
-                <td>{{ revista.1 }}</td>
+                <td scope="row">{{ revista.1 }}</td>
                 <td>{{ revista.2 }}</td>
                 <td>{{ revista.3 }}</td>
                 <td>{{ revista.4 }}</td>
+                <td>{{ revista.5 }}</td>
+                <td><a href="/editar/revista/{{ revista.0 }}">EDITAR</a></td>
+                <td><a href="/eliminar/revista/{{ revista.0 }}">ELIMINAR</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+                </div>
+    </div>
+    <script>
+    $(document).ready( function () {
+    $('#tabla_revistas').DataTable();
+} );
+    </script>
 {% endblock %}

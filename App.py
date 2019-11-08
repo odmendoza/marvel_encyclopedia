@@ -5,7 +5,7 @@ app = Flask(__name__)
 # Mysql Connection
 app.config['MYSQL_H0ST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = ''
+app.config['MYSQL_PASSWORD'] = '5zp8eguj'
 app.config['MYSQL_DB'] = 'marvel_encyclopedia'
 mysql = MySQL(app)
 
@@ -17,6 +17,159 @@ app.secret_key = '!my_secret*key?'
 def index():
     return render_template('index.html')
 
+@app.route('/eliminar/revista/<id>')
+def eliminar_revista(id):
+    cur = mysql.connection.cursor()
+    sql = 'DELETE FROM revistaMarvel WHERE id LIKE %s'
+    args = [id,]
+    cur.execute(sql, args)
+    mysql.connection.commit()
+    flash('Revista eliminada satisfactoriamente')
+    return listar_revistas()
+
+@app.route('/eliminar/colaborador/<id>')
+def eliminar_colaborador(id):
+    cur = mysql.connection.cursor()
+    sql = 'DELETE FROM colaborador WHERE id LIKE %s'
+    args = [id,]
+    cur.execute(sql, args)
+    mysql.connection.commit()
+    flash('Colaborador eliminado satisfactoriamente')
+    return listar_colaboradores()
+
+@app.route('/eliminar/equipo/<id>')
+def eliminar_equipo(id):
+    cur = mysql.connection.cursor()
+    sql = 'DELETE FROM equipoMarvel WHERE id LIKE %s'
+    args = [id,]
+    cur.execute(sql, args)
+    mysql.connection.commit()
+    flash('Equipo eliminado satisfactoriamente')
+    return listar_equipos()
+
+@app.route('/eliminar/personaje/<id>')
+def eliminar_personaje(id):
+    cur = mysql.connection.cursor()
+    sql = 'DELETE FROM equipoMarvel WHERE id LIKE %s'
+    args = [id,]
+    cur.execute(sql, args)
+    mysql.connection.commit()
+    flash('Personaje eliminado satisfactoriamente')
+    return listar_personajes()
+
+@app.route('/editar/revista/<id>')
+def obtener_revista(id):
+    cur = mysql.connection.cursor()
+    sql = 'SELECT * FROM revistaMarvel WHERE id = %s'
+    args = [id, ]
+    cur.execute(sql, args)
+    rv = cur.fetchall()
+    print(rv)
+    return render_template('editar_revista.html', revista=rv[0])
+
+@app.route('/editar/colaborador/<id>')
+def obtener_colaborador(id):
+    cur = mysql.connection.cursor()
+    sql = 'SELECT * FROM colaborador WHERE id = %s'
+    args = [id, ]
+    cur.execute(sql, args)
+    rv = cur.fetchall()
+    print(rv)
+    print('LO obtiene de la DB')
+    return render_template('editar_colaborador.html', colaborador=rv[0])
+
+@app.route('/editar/equipo/<id>')
+def obtener_equipo(id):
+    cur = mysql.connection.cursor()
+    sql = 'SELECT * FROM equipoMarvel WHERE id = %s'
+    args = [id, ]
+    cur.execute(sql, args)
+    rv = cur.fetchall()
+    print(rv)
+    print('Lo obtiene de la DB')
+    return render_template('editar_equipo.html', equipo=rv[0])
+
+@app.route('/editar/personaje/<id>')
+def obtener_personaje(id):
+    cur = mysql.connection.cursor()
+    sql = 'SELECT * FROM personajeMarvel WHERE id = %s'
+    args = [id, ]
+    cur.execute(sql, args)
+    rv = cur.fetchall()
+    print(rv)
+    print('Lo obtiene de la DB')
+    return render_template('editar_personaje.html', personaje=rv[0])
+
+@app.route('/editar/revista<id>', methods=['POST'])
+def editar_revista(id):
+    print (id)
+    if request.method =='POST':
+        revista = request.form
+        print(revista)
+        pagina = revista['pagina']
+        titulo = revista['titulo']
+        edicion = revista['edicion']
+        anoPublicacion = revista['anoPublicacion']
+        resena = revista['resena']
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE revistaMarvel "
+                    "SET pagina = %s, "
+                    "titulo = %s, "
+                    "edicion = %s, "
+                    "anoPublicacion = %s, "
+                    "resena = %s "
+                    "WHERE id = %s;", (int(pagina), titulo, edicion, int(anoPublicacion), resena, int(id)))
+        mysql.connection.commit()
+        flash('Revista actualizada satisfactoriamente')
+    return listar_revistas()
+
+@app.route('/editar/colaborador<id>', methods=['POST'])
+def editar_colaborador(id):
+    if request.method =='POST':
+        c = request.form
+        abreviatura = c['abreviatura']
+        colaborador = c['colaborador']
+        descripcion = c['descripcion']
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE colaborador "
+                    "SET abreviatura = %s, "
+                    "colaborador = %s, "
+                    "descripcion = %s "
+                    "WHERE id = %s;", (abreviatura, colaborador, descripcion, int(id)))
+        mysql.connection.commit()
+        flash('Colaborador actualizado satisfactoriamente')
+    return listar_colaboradores()
+
+@app.route('/editar/equipo<id>', methods=['POST'])
+def editar_equipo(id):
+    if request.method =='POST':
+        equipoMarvel = request.form
+        pagina = equipoMarvel['pagina']
+        equipo = equipoMarvel['equipo']
+        nombreEnEspanol = equipoMarvel['nombreEspanol']
+        numeroIntegrantes = equipoMarvel['numeroIntegrantes']
+        paisOrigen = equipoMarvel['paisOrigen']
+        departamento = equipoMarvel['departamento']
+        lider = equipoMarvel['lider']
+        base = equipoMarvel['base']
+        primeraAparicion = equipoMarvel['primeraAparicion']
+        fecha = equipoMarvel['fecha']
+        historia = equipoMarvel['historia']
+        colaboradores = equipoMarvel['colaboradores']
+        aliados = equipoMarvel['aliados']
+        enemigos = equipoMarvel['enemigos']
+        argumentosEsenciales = equipoMarvel['argumentosEsenciales']
+        cur = mysql.connection.cursor()
+        cur.execute("UPDATE equipoMarvel "
+                    "SET pagina = %s, equipo = %s, nombreEspanol = %s, numeroIntegrantes = %s, paisOrigen = %s, "
+                    "departamento = %s, lider = %s, base = %s, primeraAparicion = %s, fecha = %s, "
+                    "historia = %s, colaboradores = %s, aliados = %s, enemigos = %s, argumentosEsenciales = %s "
+                    "WHERE id = %s;", (pagina, equipo, nombreEnEspanol, numeroIntegrantes, paisOrigen,
+                                             departamento, lider, base, primeraAparicion, fecha,
+                                             historia, colaboradores, aliados, enemigos, argumentosEsenciales, int(id)))
+        mysql.connection.commit()
+        flash('Equipo actualizado satisfactoriamente')
+    return listar_equipos()
 
 @app.route('/buscar/personaje', methods=['GET'])
 def listar_personajes():
@@ -39,7 +192,7 @@ def listar_colaboradores():
 @app.route('/buscar/revista', methods=['GET'])
 def listar_revistas():
     cur = mysql.connection.cursor()
-    cur.execute('''SELECT * FROM revistaMarvel''')
+    cur.execute('''SELECT * FROM revistaMarvel ORDER BY pagina;''')
     rv = cur.fetchall()
     print(rv)
     return render_template('listado_revistas.html', revistas=rv)
@@ -67,8 +220,10 @@ def agregar_colaborador():
             (colaborador, abreviatura, descripcion))
         mysql.connection.commit()
         cur.close()
-    flash('Personaje agregado satisfactoriamente')
-    return render_template('agregar_colaborador.html')
+        flash('Personaje agregado satisfactoriamente')
+        return redirect(url_for('listar_colaboradores'))
+    else:
+        return render_template('agregar_colaborador.html')
 
 
 @app.route('/nueva/revista', methods=['GET', 'POST'])
@@ -86,8 +241,10 @@ def agregar_revista():
             (pagina, titulo, edicion, anoPublicacion, resena))
         mysql.connection.commit()
         cur.close()
-    flash('Resvista agregada satisfactoriamente')
-    return render_template('agregar_revista.html')
+        flash('Resvista agregada satisfactoriamente')
+        return redirect(url_for('listar_revistas'))
+    else:
+        return render_template('agregar_revista.html')
 
 
 @app.route('/nuevo/personaje', methods=['GET', 'POST'])
@@ -179,7 +336,9 @@ def agregar_equipo():
         mysql.connection.commit()
         cur.close()
         flash('Equipo agregado satisfactoriamente')
-    return render_template('agregar_equipo.html')
+        return redirect(url_for('listar_equipos'))
+    else:
+        return render_template('agregar_equipo.html')
 
 
 if __name__ == '__main__':

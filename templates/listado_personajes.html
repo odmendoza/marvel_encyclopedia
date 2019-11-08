@@ -5,44 +5,47 @@
 {% endblock %}
 
 {% block contenido %}
+    <br>
     <a href="/nuevo/personaje" class="btn btn-primary btn-lg active btn-block" role="button" aria-pressed="true">Añadir
         nuevo personaje</a>
-    <table class="table table-bordered">
+    <br>
+    <table class="table table-bordered" id="tabla_personajes">
         <thead>
         <tr>
-            <td>Página</td>
-            <td>Personaje</td>
-            <td>Nombre en español</td>
-            <td>Nombre real</td>
-            <td>Ocupación</td>
-            <td>Base</td>
-            <td>Altura</td>
-            <td>Peso</td>
-            <td>Ojos</td>
-            <td>Pelo</td>
-            <td>Primera aparición</td>
-            <td>Poderes</td>
-            <td>Historia</td>
-            <td>Curiosidades</td>
-            <td>Colaboradores</td>
-            <td>Fecha aparición</td>
-            <td>Debilidad</td>
-            <td>Obsesiones</td>
-            <td>Causa del poder</td>
-            <td>Género</td>
-            <td>Enemigos</td>
-            <td>Planeta de origen</td>
-            <td>Argumentos esenciales</td>
-            <td>Aliados</td>
-            <td>Relación sentimental</td>
-            <td>Apodo</td>
-            <td>Miembros clave</td>
+            <th>Página</th>
+            <th>Personaje</th>
+            <th>Nombre en español</th>
+            <th>Nombre real</th>
+            <th>Ocupación</th>
+            <th>Base</th>
+            <th>Altura</th>
+            <th>Peso</th>
+            <th>Ojos</th>
+            <th>Pelo</th>
+            <th>Primera aparición</th>
+            <th>Poderes</th>
+            <th>Historia</th>
+            <th>Curiosidades</th>
+            <th>Colaboradores</th>
+            <th>Fecha aparición</th>
+            <th>Debilidad</th>
+            <th>Obsesiones</th>
+            <th>Causa del poder</th>
+            <th>Género</th>
+            <th>Enemigos</th>
+            <th>Planeta de origen</th>
+            <th>Argumentos esenciales</th>
+            <th>Aliados</th>
+            <th>Relación sentimental</th>
+            <th>Apodo</th>
+            <th>Miembros clave</th>
+            <th></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         {% for personaje in personajes %}
             <tr>
-                <td>{{ personaje.0 }}</td>
                 <td>{{ personaje.1 }}</td>
                 <td>{{ personaje.2 }}</td>
                 <td>{{ personaje.3 }}</td>
@@ -70,8 +73,57 @@
                 <td>{{ personaje.25 }}</td>
                 <td>{{ personaje.26 }}</td>
                 <td>{{ personaje.27 }}</td>
+                <td><a href="/editar/personaje/{{ personaje.0 }}">EDITAR</a></td>
+                <td><a href="/eliminar/personaje/{{ personaje.0 }}">ELIMINAR</a></td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <script>
+    $(document).ready(function() {
+    $('#tabla_personajes').DataTable( {
+        dom: 'Bfrtip',
+        columnDefs: [
+            {
+                targets: 1,
+                className: 'noVis'
+            },
+            {
+               // Volver botones invisibles y excluirlos de las busquedas
+                targets : [11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26] ,
+                visible: false,
+                searchable: false
+            },
+            {
+            orderable: false,
+            className: 'select-checkbox',
+            targets:   0
+        }
+
+        ],
+        buttons: [
+            {
+                extend: 'colvisGroup',
+                text: 'Ver historia',
+                show: [ 1, 12],
+                hide: [ 0,2,3,4,5,6,7,8,9,10,11,13,14,15,16,17,18,19,20,21,22,23,24,25,26]
+            },
+            {
+                extend: 'colvisGroup',
+                text: 'Ver poderes',
+                show: [ 1, 11, 18 ],
+                hide: [ 0,2,3,4,5,6,7,8,9,10,12,13,14,15,16,17,19,20,21,22,23,24,25,26 ]
+            },
+            {
+                extend: 'colvisGroup',
+                text: 'Ver todo',
+                show: ':hidden',
+                hide: [11,12]
+            }
+            {#,#}
+            {#'copy', 'csv', 'excel', 'pdf', 'print'#}
+        ]
+    } );
+} );
+    </script>
 {% endblock %}
