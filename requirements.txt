@@ -9,3 +9,4 @@ Werkzeug==0.16.0
 Flask-Heroku
 gunicorn
 Flask-SQLAlchemy
+psycopg2
