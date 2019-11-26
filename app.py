@@ -68,11 +68,11 @@ class Team(db.Model):
 
 @app.route('/', methods=['GET'])
 def index():
-    users = User.query.all()
-    danilo = User.query.filter_by(username='Danilo').first()
-    print(users)
-    print(danilo.username, ' | ', danilo.email)
-    return {}
+    # users = User.query.all()
+    # danilo = User.query.filter_by(username='Danilo').first()
+    # print(users)
+    # print(danilo.username, ' | ', danilo.email)
+    return "<h1>Hola danilo, estoy vivo</h1>"
 
 
 if __name__ == '__main__':
