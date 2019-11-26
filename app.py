@@ -1,10 +1,13 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_heroku import Heroku
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.sqlite'
-db = SQLAlchemy(app)
+heroku = Heroku(app)
 
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.sqlite'
+db = SQLAlchemy(app)
+db.create_all()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)

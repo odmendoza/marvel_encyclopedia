@@ -8,4 +8,4 @@ PyMySQL==0.9.3
 Werkzeug==0.16.0
 Flask-Heroku
 gunicorn
-SQLAlchemy
+Flask-SQLAlchemy
