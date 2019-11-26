@@ -7,7 +7,7 @@ heroku = Heroku(app)
 
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.sqlite'
 db = SQLAlchemy(app)
-db.create_all()
+#db.create_all()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
