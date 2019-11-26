@@ -73,3 +73,7 @@ def index():
     print(users)
     print(danilo.username, ' | ', danilo.email)
     return {}
+
+
+if __name__ == '__main__':
+    app.run()
